@@ -13,7 +13,7 @@ def create_consumer():
     KAFKA_TOPIC = 'csv_data'
 
     # Initialize Kafka Consumer
-    consumer  = Consumer({'bootstrap.servers': KAFKA_SERVER, 'security.protocol': 'SASL_SSL','sasl.username':'doadmin','sasl.mechanism':'PLAIN','sasl.password': 'AVNS__btC7Ck9sPt9DleglEq','ssl.key.location':'/root/source/cert/user-access-key.key','ssl.certificate.location':'/root/source/cert/user-access-certificate.crt','ssl.ca.location':'/root/source/cert/ca-certificate.crt','ssl.endpoint.identification.algorithm': 'none', 'group.id':'salam'})
+    consumer  = Consumer()
 
 
     def on_assign(consumer, partitions):
