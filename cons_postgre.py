@@ -4,16 +4,16 @@ from db_conn import DatabaseConnection
 
 
 KAFKA_TOPIC = 'csv_data'
-KAFKA_SERVER = 'db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25073'
+KAFKA_SERVER = ''
 KAFKA_PROTOCOL = 'SASL_SSL'
 KAFKA_USER = 'doadmin'
-KAFKA_PASSWORD = 'AVNS__btC7Ck9sPt9DleglEq'
+KAFKA_PASSWORD = ''
 KAFKA_MECHANISM = 'PLAIN'
 
 DB_NAME = 'proto'
-DB_USER = 'doadmin'
-DB_PASSWORD = 'AVNS_hEhWhigaq-RPwKXqDJ1'
-DB_HOST = 'db-postgresql-nyc3-99348-do-user-1044483-0.c.db.ondigitalocean.com'
+DB_USER = ''
+DB_PASSWORD = ''
+DB_HOST = ''
 DB_PORT = 25060
 
 KAFKA_CONFIG = {
