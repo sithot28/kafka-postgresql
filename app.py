@@ -15,11 +15,31 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 # Kafka configuration
 #KAFKA_SERVER = 'private-db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25080'
-KAFKA_SERVER = 'db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25073'
+#KAFKA_SERVER = 'db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25073'
+KAFKA_SERVER = os.getenv('KAFKA_SERVER')
+KAFKA_PROTOCOL = 'SASL_SSL'
+KAFKA_USER = 'doadmin'
+KAFKA_PASSWORD = os.getenv('KAFKA_PASSWORD')
+KAFKA_MECHANISM = 'PLAIN'
 KAFKA_TOPIC = 'csv_data'
 
+KAFKA_CONFIG = {
+    'bootstrap.servers': KAFKA_SERVER,
+    'group.id': 'salam',
+    'security.protocol': KAFKA_PROTOCOL,
+    'sasl.username': KAFKA_USER,
+    'sasl.mechanism': KAFKA_MECHANISM,
+    'sasl.password': KAFKA_PASSWORD,
+    'ssl.ca.location':'/root/source/cert/ca-certificate.crt',
+    'ssl.key.location':'/root/source/cert/user-access-key.key',
+    'ssl.certificate.location':'/root/source/cert/user-access-certificate.crt',
+    'ssl.endpoint.identification.algorithm': 'none',
+    'auto.offset.reset': 'earliest'
+}
+
 # Initialize Kafka Producer
-producer = Producer({'bootstrap.servers': KAFKA_SERVER, 'security.protocol': 'SASL_SSL','sasl.username':'doadmin','sasl.mechanism':'PLAIN','sasl.password': 'AVNS__btC7Ck9sPt9DleglEq','ssl.key.location':'/root/source/cert/user-access-key.key','ssl.certificate.location':'/root/source/cert/user-access-certificate.crt','ssl.ca.location':'/root/source/cert/ca-certificate.crt','ssl.endpoint.identification.algorithm': 'none'})
+#producer = Producer({'bootstrap.servers': KAFKA_SERVER, 'security.protocol': 'SASL_SSL','sasl.username':'doadmin','sasl.mechanism':'PLAIN','sasl.password': 'AVNS__btC7Ck9sPt9DleglEq','ssl.key.location':'/root/source/cert/user-access-key.key','ssl.certificate.location':'/root/source/cert/user-access-certificate.crt','ssl.ca.location':'/root/source/cert/ca-certificate.crt','ssl.endpoint.identification.algorithm': 'none'})
+producer = Producer(KAFKA_CONFIG)
 
 def delivery_report(err, msg):
     if err is not None:
