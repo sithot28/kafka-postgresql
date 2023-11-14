@@ -25,7 +25,6 @@ KAFKA_TOPIC = 'csv_data'
 
 KAFKA_CONFIG = {
     'bootstrap.servers': KAFKA_SERVER,
-    'group.id': 'salam',
     'security.protocol': KAFKA_PROTOCOL,
     'sasl.username': KAFKA_USER,
     'sasl.mechanism': KAFKA_MECHANISM,
