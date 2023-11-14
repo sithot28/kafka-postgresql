@@ -36,8 +36,6 @@ KAFKA_CONFIG = {
     'auto.offset.reset': 'earliest'
 }
 
-# Initialize Kafka Producer
-#producer = Producer({'bootstrap.servers': KAFKA_SERVER, 'security.protocol': 'SASL_SSL','sasl.username':'doadmin','sasl.mechanism':'PLAIN','sasl.password': 'AVNS__btC7Ck9sPt9DleglEq','ssl.key.location':'/root/source/cert/user-access-key.key','ssl.certificate.location':'/root/source/cert/user-access-certificate.crt','ssl.ca.location':'/root/source/cert/ca-certificate.crt','ssl.endpoint.identification.algorithm': 'none'})
 producer = Producer(KAFKA_CONFIG)
 
 def delivery_report(err, msg):
@@ -53,6 +51,7 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    producer.flush()
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
     file = request.files['file']
