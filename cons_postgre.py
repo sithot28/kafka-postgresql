@@ -1,19 +1,20 @@
 # kafka_consumer.py
+import os
 from confluent_kafka import Consumer, KafkaError
 from db_conn import DatabaseConnection
 
 
 KAFKA_TOPIC = 'csv_data'
-KAFKA_SERVER = ''
+KAFKA_SERVER = os.getenv('KAFKA_SERVER')
 KAFKA_PROTOCOL = 'SASL_SSL'
 KAFKA_USER = 'doadmin'
-KAFKA_PASSWORD = ''
+KAFKA_PASSWORD = os.getenv('KAFKA_PASSWORD')
 KAFKA_MECHANISM = 'PLAIN'
 
 DB_NAME = 'proto'
-DB_USER = ''
-DB_PASSWORD = ''
-DB_HOST = ''
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
 DB_PORT = 25060
 
 KAFKA_CONFIG = {
