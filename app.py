@@ -5,7 +5,7 @@ import os, csv
 import threading
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'salamOK'
+app.config['SECRET_KEY'] = '***abc'
 socketio = SocketIO(app)
 
 # Directory to save uploaded files
@@ -14,8 +14,6 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 # Kafka configuration
-#KAFKA_SERVER = 'private-db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25080'
-#KAFKA_SERVER = 'db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25073'
 KAFKA_SERVER = os.getenv('KAFKA_SERVER')
 KAFKA_PROTOCOL = 'SASL_SSL'
 KAFKA_USER = 'doadmin'
