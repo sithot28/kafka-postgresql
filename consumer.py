@@ -3,8 +3,7 @@ from confluent_kafka import Consumer
 
 
 # Kafka configuration
-#KAFKA_SERVER = 'private-db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25080'
-KAFKA_SERVER = 'db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25073'
+KAFKA_SERVER = 'KAFKA_SERVER'
 KAFKA_TOPIC = 'csv_data'
 
 # Initialize Kafka Producer
