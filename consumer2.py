@@ -9,7 +9,7 @@ KAFKA_CONFIG = {
 
 def create_consumer():
 
-    KAFKA_SERVER = 'db-kafka-sfo3-87231-do-user-1044483-0.c.db.ondigitalocean.com:25073'
+    KAFKA_SERVER = 'KAFKA_SERVER'
     KAFKA_TOPIC = 'csv_data'
 
     # Initialize Kafka Consumer
